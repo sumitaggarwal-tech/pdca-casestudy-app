@@ -1,0 +1,8 @@
+Question Level,Why Asked,Answer/Finding
+Problem Statement,Initial Problem,Customers waiting more than 4 minutes for orders
+Why 1,Why are customers waiting so long?,Orders take too long to prepare
+Why 2,Why do orders take too long?,Baristas handling multiple order types simultaneously without prioritization
+Why 3,Why no prioritization?,No intelligent system to sequence orders
+Why 4,Why no sequencing system?,First-come-first-served doesn't account for order complexity
+Why 5,Why this approach used?,Company lacks technology-enabled order management
+Root Cause,Final Determination,Absence of intelligent order sequencing algorithm and optimized workflow

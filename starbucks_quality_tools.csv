@@ -1,0 +1,11 @@
+Quality Tool,Purpose in Case,When Used,Key Insight Generated
+Fishbone Diagram,Identify all potential root causes across 6M categories,PLAN Phase,"15 specific causes identified across method, machine, manpower, material, measurement, environment"
+5 Whys Analysis,Drill down to root cause of wait time issue,PLAN Phase,Lack of intelligent order sequencing system is root cause
+Pareto Chart,Prioritize which causes contribute most to delays,PLAN Phase,Order sequencing (35%) and staffing (25%) = 60% of problem
+Process Flow Mapping,Visualize current state workflow and identify bottlenecks,PLAN Phase,Bottleneck at order preparation due to no prioritization
+Checksheet,Collect wait time data systematically,PLAN & CHECK,Systematic data collection for 3 months across multiple stores
+Control Chart,Monitor wait time variation and identify out-of-control points,CHECK Phase,Detected consistent improvement after algorithm implementation
+Statistical Process Control,Measure process capability and consistency,CHECK Phase,Process now more stable and predictable
+Before-After Analysis,Compare baseline vs pilot results,CHECK Phase,33.3% improvement in average wait time validated
+Performance Dashboard,Real-time monitoring of KPIs,CHECK & ACT,Enabled ongoing tracking and quick response to issues
+Standard Operating Procedures,Document and standardize improved processes,ACT Phase,Ensured consistent implementation across all locations

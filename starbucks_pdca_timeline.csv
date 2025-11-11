@@ -1,0 +1,16 @@
+Phase,Activity,Duration,Key Outputs
+PLAN,Problem identification & data collection,Month 1-2,"Baseline metrics, root cause analysis"
+PLAN,"Root cause analysis (Fishbone, 5 Whys, Pareto)",Month 2,Identified sequencing as primary issue
+PLAN,Target setting & solution design,Month 2-3,"4-minute target, algorithm concept"
+DO,Technology partner selection,Month 3,Partnership with Empower Delivery
+DO,Algorithm development,Month 3-4,Rules-based sequencing algorithm
+DO,Pilot store selection (700 stores),Month 4,Mix of high-volume and typical stores
+DO,Training program development,Month 4-5,Barista training materials
+DO,Pilot implementation & monitoring,Month 5-8,"System deployed, real-time tracking"
+CHECK,Data collection & analysis,Month 6-8,"Wait time tracking, performance data"
+CHECK,Results evaluation,Month 8,"2-minute reduction, 75% target achieved"
+CHECK,Stakeholder feedback,Month 8,Customer & barista feedback collected
+ACT,Standardization planning,Month 9,Rollout strategy developed
+ACT,Company-wide rollout,Month 9-12,Algorithm deployed nationwide
+ACT,Continuous monitoring established,Ongoing,"Monthly reviews, quarterly analysis"
+ACT,Next improvement cycle planned,Month 12+,"AI/ML enhancements, equipment upgrades"

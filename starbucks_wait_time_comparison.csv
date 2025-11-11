@@ -1,0 +1,5 @@
+Metric,Before PDCA,After PDCA,Improvement
+Average Wait Time (minutes),6.0,4.0,33.3%
+Peak Wait Time (minutes),13.3,5.3,60.2%
+Orders Under 4 Min (%),50,75,+25 pts
+Mobile Order Time (minutes),6.0,4.5,25.0%

@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbucks PDCA Case Study - Interactive Training</title>
+    <style>
+        /* Design System */
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            --color-info: var(--color-slate-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+            --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --status-bg-opacity: 0.15;
+            --status-border-opacity: 0.25;
+            --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+            --letter-spacing-tight: -0.01em;
+            --space-0: 0;
+            --space-1: 1px;
+            --space-2: 2px;
+            --space-4: 4px;
+            --space-6: 6px;
+            --space-8: 8px;
+            --space-10: 10px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+
+            /* Starbucks Brand Colors */
+            --starbucks-green: #00704A;
+            --starbucks-green-dark: #005a3b;
+            --starbucks-brown: #5E4230;
+            --starbucks-white: #FFFFFF;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+                --color-bg-4: rgba(185, 28, 28, 0.15);
+                --color-bg-5: rgba(107, 33, 168, 0.15);
+                --color-bg-6: rgba(194, 65, 12, 0.15);
+                --color-bg-7: rgba(190, 24, 93, 0.15);
+                --color-bg-8: rgba(8, 145, 178, 0.15);
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-primary-active: var(--color-teal-800);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+                --color-info: var(--color-gray-300);
+                --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+                --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+                --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+                --color-success-rgb: var(--color-teal-300-rgb);
+                --color-error-rgb: var(--color-red-400-rgb);
+                --color-warning-rgb: var(--color-orange-400-rgb);
+                --color-info-rgb: var(--color-gray-300-rgb);
+            }
+        }
+
+        @font-face {
+            font-family: 'FKGroteskNeue';
+            src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: sticky;
+            top: 0;
+            background: var(--starbucks-green);
+            color: white;
+            padding: var(--space-16) var(--space-24);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+        }
+
+        .header-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn.active {
+            background: white;
+            color: var(--starbucks-green);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            padding: var(--space-32) var(--space-24);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Section */
+        .welcome-hero {
+            background: linear-gradient(135deg, var(--starbucks-green) 0%, var(--starbucks-green-dark) 100%);
+            color: white;
+            padding: var(--space-32);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: var(--space-32);
+        }
+
+        .welcome-hero h1 {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-16);
+            color: white;
+        }
+
+        .welcome-hero h2 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-normal);
+            margin-bottom: var(--space-24);
+            opacity: 0.9;
+            color: white;
+        }
+
+        .welcome-intro {
+            background: var(--color-surface);
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            margin-bottom: var(--space-24);
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-16);
+            margin-top: var(--space-24);
+        }
+
+        .welcome-card {
+            background: var(--color-surface);
+            padding: var(--space-20);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .welcome-card h3 {
+            color: var(--starbucks-green);
+            margin-bottom: var(--space-12);
+        }
+
+        /* Card Components */
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-24);
+            margin-bottom: var(--space-24);
+        }
+
+        .card h2 {
+            color: var(--starbucks-green);
+            margin-bottom: var(--space-16);
+        }
+
+        .card h3 {
+            color: var(--color-text);
+            margin-top: var(--space-20);
+            margin-bottom: var(--space-12);
+        }
+
+        .card h4 {
+            color: var(--color-text);
+            margin-top: var(--space-16);
+            margin-bottom: var(--space-8);
+        }
+
+        /* Metrics Display */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-16);
+            margin: var(--space-24) 0;
+        }
+
+        .metric-box {
+            background: var(--color-bg-1);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+        }
+
+        .metric-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-4);
+        }
+
+        .metric-value {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--starbucks-green);
+        }
+
+        /* Lists */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .styled-list li {
+            padding: var(--space-12) var(--space-16);
+            margin-bottom: var(--space-8);
+            background: var(--color-bg-3);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--starbucks-green);
+        }
+
+        .styled-list li strong {
+            color: var(--starbucks-green);
+        }
+
+        /* Expandable Sections */
+        .expandable {
+            margin: var(--space-16) 0;
+        }
+
+        .expandable-header {
+            background: var(--color-bg-2);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .expandable-header:hover {
+            background: var(--color-bg-3);
+        }
+
+        .expandable-header h4 {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .expandable-icon {
+            font-size: var(--font-size-xl);
+            transition: transform var(--duration-fast) var(--ease-standard);
+        }
+
+        .expandable.open .expandable-icon {
+            transform: rotate(180deg);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--duration-normal) var(--ease-standard);
+        }
+
+        .expandable.open .expandable-content {
+            max-height: 5000px;
+        }
+
+        .expandable-body {
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-top: none;
+            border-radius: 0 0 var(--radius-base) var(--radius-base);
+        }
+
+        /* Images */
+        .chart-container {
+            margin: var(--space-24) 0;
+            text-align: center;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+        }
+
+        .chart-caption {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-8);
+            font-style: italic;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-16) 0;
+        }
+
+        th, td {
+            padding: var(--space-12);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background: var(--starbucks-green);
+            color: white;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        tr:hover {
+            background: var(--color-bg-1);
+        }
+
+        /* Assessment */
+        .question-card {
+            background: var(--color-surface);
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            margin-bottom: var(--space-24);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .question-number {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .question-type {
+            background: var(--starbucks-green);
+            color: white;
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .question-text {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-16);
+            line-height: 1.6;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+        }
+
+        .option {
+            padding: var(--space-16);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-standard);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-12);
+        }
+
+        .option:hover {
+            border-color: var(--starbucks-green);
+            background: var(--color-bg-3);
+        }
+
+        .option input[type="radio"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            border-color: var(--starbucks-green);
+            background: var(--color-bg-3);
+        }
+
+        .option.correct {
+            border-color: var(--color-success);
+            background: rgba(var(--color-success-rgb), 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--color-error);
+            background: rgba(var(--color-error-rgb), 0.1);
+        }
+
+        .feedback {
+            margin-top: var(--space-16);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: rgba(var(--color-success-rgb), 0.1);
+            border: 1px solid var(--color-success);
+            color: var(--color-success);
+        }
+
+        .feedback.incorrect {
+            background: rgba(var(--color-error-rgb), 0.1);
+            border: 1px solid var(--color-error);
+            color: var(--color-error);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: var(--space-12);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-base);
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--starbucks-green);
+        }
+
+        .rubric {
+            background: var(--color-bg-2);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-top: var(--space-16);
+            border-left: 4px solid var(--starbucks-green);
+        }
+
+        .rubric h4 {
+            margin-bottom: var(--space-8);
+            color: var(--starbucks-green);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--starbucks-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--starbucks-green-dark);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--starbucks-green);
+            color: var(--starbucks-green);
+        }
+
+        .btn-outline:hover {
+            background: var(--starbucks-green);
+            color: white;
+        }
+
+        .assessment-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-24);
+            flex-wrap: wrap;
+            gap: var(--space-16);
+        }
+
+        .progress-text {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .score-card {
+            background: var(--starbucks-green);
+            color: white;
+            padding: var(--space-32);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: var(--space-24) 0;
+        }
+
+        .score-value {
+            font-size: 48px;
+            font-weight: var(--font-weight-bold);
+            margin: var(--space-16) 0;
+        }
+
+        /* Library */
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-16);
+            margin: var(--space-24) 0;
+        }
+
+        .library-item {
+            background: var(--color-surface);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-card-border);
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .library-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .library-item h4 {
+            color: var(--starbucks-green);
+            margin-bottom: var(--space-8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-buttons {
+                width: 100%;
+            }
+
+            .nav-btn {
+                flex: 1;
+                min-width: 80px;
+            }
+
+            .welcome-hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .header, .nav-buttons, .btn {
+                display: none;
+            }
+
+            .section {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title">PDCA Training: Starbucks Case Study</div>
+            <nav class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('welcome')">Welcome</button>
+                <button class="nav-btn" onclick="showSection('overview')">Overview</button>
+                <button class="nav-btn" onclick="showSection('plan')">Plan</button>
+                <button class="nav-btn" onclick="showSection('do')">Do</button>
+                <button class="nav-btn" onclick="showSection('check')">Check</button>
+                <button class="nav-btn" onclick="showSection('act')">Act</button>
+                <button class="nav-btn" onclick="showSection('library')">Library</button>
+                <button class="nav-btn" onclick="showSection('assessment')">Assessment</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Welcome Section -->
+        <section id="welcome" class="section active">
+            <div class="welcome-hero">
+                <h1>Starbucks Service Speed Improvement: A PDCA Case Study</h1>
+                <h2>Real-World Application of Plan-Do-Check-Act Methodology in Service Sector</h2>
+            </div>
+
+            <div class="welcome-intro">
+                <h3 style="margin-bottom: 16px;">About This Training</h3>
+                <p style="margin-bottom: 16px;">Welcome to this interactive PDCA (Plan-Do-Check-Act) training module featuring a real-world case study from Starbucks Corporation. This comprehensive training will guide you through how a global service sector leader applied systematic quality improvement methodologies to solve critical business challenges.</p>
+                <p style="margin-bottom: 16px;"><strong>What You'll Learn:</strong></p>
+                <ul style="margin-left: 24px; margin-bottom: 16px;">
+                    <li>How to apply PDCA methodology to real business problems</li>
+                    <li>Which quality tools to use at each phase of PDCA</li>
+                    <li>How to analyze root causes systematically using Fishbone diagrams, 5 Whys, and Pareto analysis</li>
+                    <li>The importance of pilot testing and data-driven decision making</li>
+                    <li>How to standardize improvements and create continuous improvement culture</li>
+                </ul>
+                <p><strong>Training Structure:</strong> Navigate through each section using the menu above. Complete the case study review, then test your understanding with a 15-question assessment.</p>
+            </div>
+
+            <div class="welcome-grid">
+                <div class="welcome-card" onclick="showSection('overview')">
+                    <h3>📊 Case Overview</h3>
+                    <p>Understand the business challenge and baseline metrics</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('plan')">
+                    <h3>📋 PLAN Phase</h3>
+                    <p>Root cause analysis &amp; quality tools</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('do')">
+                    <h3>⚙️ DO Phase</h3>
+                    <p>Solution implementation &amp; pilot testing</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('check')">
+                    <h3>✓ CHECK Phase</h3>
+                    <p>Results measurement &amp; analysis</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('act')">
+                    <h3>🔄 ACT Phase</h3>
+                    <p>Standardization &amp; continuous improvement</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('library')">
+                    <h3>📚 Library</h3>
+                    <p>All documents, data &amp; visuals</p>
+                </div>
+                <div class="welcome-card" onclick="showSection('assessment')">
+                    <h3>✍️ Assessment</h3>
+                    <p>Test your knowledge (15 questions)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">Case Study Overview</h1>
+
+            <div class="card">
+                <h2>Company Profile</h2>
+                <p><strong>Company:</strong> Starbucks Corporation</p>
+                <p><strong>Industry:</strong> Service Sector - Quick Service Restaurant / Global Coffeehouse Chain</p>
+                <p><strong>Scope:</strong> Over 30,000 stores worldwide</p>
+                <p style="margin-top: 16px;">Starbucks is the world's largest coffeehouse chain, known for premium coffee and customer experience. As a service-sector leader, operational efficiency and customer satisfaction are critical to business success.</p>
+            </div>
+
+            <div class="card">
+                <h2>Business Challenge</h2>
+                <p style="font-size: var(--font-size-lg); margin-bottom: 16px;"><strong>Problem Statement:</strong> Long customer wait times were negatively impacting customer satisfaction and business performance.</p>
+                
+                <h3>Baseline Metrics (Before PDCA)</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-label">Average Wait Time</div>
+                        <div class="metric-value">6.0 min</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Peak Wait Time</div>
+                        <div class="metric-value">13.3 min</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Orders Under 4 Minutes</div>
+                        <div class="metric-value">50%</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-4);">
+                        <div class="metric-label">Business Impact</div>
+                        <div class="metric-value" style="color: var(--color-error); font-size: var(--font-size-lg);">5 Quarters Decline</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 16px; padding: 16px; background: var(--color-bg-4); border-radius: var(--radius-base); border-left: 4px solid var(--color-error);"><strong>Critical Impact:</strong> The company experienced 5 consecutive quarters of same-store sales decline, directly linked to deteriorating customer experience from long wait times.</p>
+            </div>
+
+            <div class="card">
+                <h2>Target Metrics (Goals)</h2>
+                <div class="metrics-grid">
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Target Average Wait Time</div>
+                        <div class="metric-value">4.0 min</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Target Orders Under 4 Min</div>
+                        <div class="metric-value">75%</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Target Peak Wait Time</div>
+                        <div class="metric-value">&lt; 5.5 min</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Why PDCA Methodology?</h2>
+                <p style="margin-bottom: 16px;">Starbucks chose the PDCA (Plan-Do-Check-Act) methodology because:</p>
+                <ul class="styled-list">
+                    <li><strong>Systematic Approach:</strong> PDCA provides a structured framework for problem-solving rather than reactive fixes</li>
+                    <li><strong>Data-Driven:</strong> Emphasizes measurement and analysis before and after changes</li>
+                    <li><strong>Risk Mitigation:</strong> The pilot testing approach (DO phase) reduces risk of company-wide failures</li>
+                    <li><strong>Continuous Improvement:</strong> PDCA is a cycle that enables ongoing refinement and learning</li>
+                    <li><strong>Standardization:</strong> Ensures successful solutions are documented and replicated across all locations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PLAN Phase Section -->
+        <section id="plan" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">PLAN Phase: Problem Analysis &amp; Root Cause Identification</h1>
+
+            <div class="card">
+                <h2>Step 1: Problem Identification</h2>
+                <p style="margin-bottom: 16px;">The PLAN phase began with clearly defining the problems:</p>
+                <ul class="styled-list">
+                    <li>Long customer wait times averaging 6.0 minutes</li>
+                    <li>Peak period wait times reaching 13.3 minutes</li>
+                    <li>Only 50% of orders completed within 4 minutes</li>
+                    <li>Order sequencing inefficiencies between mobile, drive-thru, and in-store channels</li>
+                    <li>Inadequate staffing during peak hours</li>
+                    <li>Complex menu causing preparation delays</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Step 2: Data Collection Methods</h2>
+                <p style="margin-bottom: 16px;">Comprehensive data was gathered through:</p>
+                <ul class="styled-list">
+                    <li><strong>Time Tracking:</strong> Customer wait time tracking over 3 months at multiple locations</li>
+                    <li><strong>Channel Analysis:</strong> Order completion time analysis by channel (in-store, mobile, drive-thru)</li>
+                    <li><strong>Pattern Identification:</strong> Peak hour traffic pattern analysis</li>
+                    <li><strong>Customer Feedback:</strong> Customer satisfaction surveys and complaint analysis</li>
+                    <li><strong>Process Observation:</strong> Service process observation and time-motion studies</li>
+                    <li><strong>Workload Assessment:</strong> Barista workload and capacity analysis</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Step 3: Quality Tools for Root Cause Analysis</h2>
+                
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>1. Fishbone Diagram (Ishikawa Diagram)</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Systematically identify ALL potential root causes across the 6M categories</p>
+                            
+                            <h4>Categories Analyzed:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px;">
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Method (Process):</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Order sequencing follows first-come-first-served</li>
+                                        <li>No prioritization between channels</li>
+                                        <li>Inefficient drink preparation routines</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Machine (Equipment):</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Equipment capacity constraints</li>
+                                        <li>Outdated order management system</li>
+                                        <li>Lack of automated sequencing technology</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Manpower (People):</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Insufficient peak staffing levels</li>
+                                        <li>Training gaps in efficiency techniques</li>
+                                        <li>High employee turnover</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Material (Inputs):</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Overly complex menu with too many options</li>
+                                        <li>High degree of drink customizations</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Measurement:</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Lack of real-time wait time tracking</li>
+                                        <li>No standardized service time goals (this was the first time in company history setting a 4-minute goal!)</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 12px;"><strong style="color: var(--starbucks-green);">Environment:</strong>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        <li>Variable peak traffic patterns</li>
+                                        <li>Physical layout constraints at some locations</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);"><strong>Key Insight:</strong> 15 distinct potential causes identified across all 6M categories, providing comprehensive view of the problem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>2. 5 Whys Analysis</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Drill down from surface symptoms to the fundamental root cause</p>
+                            
+                            <div style="padding: 16px; background: var(--color-bg-1); border-radius: var(--radius-base); margin: 16px 0;">
+                                <p style="margin-bottom: 12px;"><strong>Problem:</strong> Why are customers waiting more than 4 minutes?</p>
+                                <p style="margin-left: 20px; margin-bottom: 12px;">↓ <strong>Why 1:</strong> Because orders take too long to prepare</p>
+                                <p style="margin-left: 40px; margin-bottom: 12px;">↓ <strong>Why 2:</strong> Because baristas are handling multiple order types simultaneously without prioritization</p>
+                                <p style="margin-left: 60px; margin-bottom: 12px;">↓ <strong>Why 3:</strong> Because there is no intelligent system to sequence orders efficiently</p>
+                                <p style="margin-left: 80px; margin-bottom: 12px;">↓ <strong>Why 4:</strong> Because the first-come-first-served approach doesn't account for order complexity or channel differences</p>
+                                <p style="margin-left: 100px; margin-bottom: 12px;">↓ <strong>Why 5:</strong> Because the company lacks technology-enabled order management and intelligent sequencing</p>
+                                <p style="margin-left: 120px; padding: 12px; background: var(--starbucks-green); color: white; border-radius: var(--radius-base);"><strong>ROOT CAUSE:</strong> Absence of intelligent order sequencing algorithm and optimized workflow system</p>
+                            </div>
+
+                            <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);"><strong>Key Insight:</strong> The fundamental issue wasn't just "slow service" but the lack of an intelligent system to manage order flow efficiently</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>3. Pareto Analysis</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Prioritize which causes contribute MOST significantly to delays (80/20 principle)</p>
+                            
+                            <h4>Results:</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Root Cause</th>
+                                        <th>Contribution to Delays</th>
+                                        <th>Cumulative %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Order Sequencing Inefficiency</td>
+                                        <td><strong>35%</strong></td>
+                                        <td>35%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peak Hour Understaffing</td>
+                                        <td><strong>25%</strong></td>
+                                        <td>60%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complex Menu Items</td>
+                                        <td>20%</td>
+                                        <td>80%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Equipment Capacity Limitations</td>
+                                        <td>12%</td>
+                                        <td>92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Other Factors</td>
+                                        <td>8%</td>
+                                        <td>100%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="chart-container" style="margin-top: 24px;">
+                                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/4ab68c3f-5bb9-4c0d-856f-c69fe1986d1a/73d6428b.png" alt="Pareto Chart showing root causes of wait time delays">
+                                <p class="chart-caption">Pareto analysis identifying that order sequencing inefficiency and peak hour understaffing account for 60% of all wait time delays</p>
+                            </div>
+
+                            <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);"><strong>Key Insight:</strong> Top 2 causes (order sequencing + staffing) account for 60% of the problem. By addressing these, Starbucks could achieve significant impact with focused effort (80/20 principle in action)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>4. Process Flow Mapping</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Visualize the sequential workflow and identify bottlenecks</p>
+                            
+                            <h4>Current State Workflow (Before PDCA):</h4>
+                            <div style="padding: 16px; background: var(--color-bg-1); border-radius: var(--radius-base); margin: 16px 0;">
+                                <p style="margin-bottom: 8px;">1. Customer arrives and joins queue</p>
+                                <p style="margin-bottom: 8px;">2. Customer places order at counter / drive-thru / mobile app</p>
+                                <p style="margin-bottom: 8px;">3. Order enters preparation queue (no prioritization)</p>
+                                <p style="margin-bottom: 8px; padding: 12px; background: var(--color-bg-4); border-radius: var(--radius-base); border-left: 4px solid var(--color-error);">⚠️ <strong>BOTTLENECK IDENTIFIED:</strong> Orders processed strictly first-come-first-served regardless of complexity or channel</p>
+                                <p style="margin-bottom: 8px;">4. Barista prepares drink following queue order</p>
+                                <p style="margin-bottom: 8px;">5. Drink completed and handed to customer</p>
+                            </div>
+
+                            <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);"><strong>Key Insight:</strong> Bottleneck occurs at order sequencing and peak hour capacity constraints. Simple drinks wait behind complex orders, and channels aren't balanced</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Step 4: Targets Established</h2>
+                <p style="margin-bottom: 16px;">Based on analysis, specific, measurable targets were set:</p>
+                
+                <div style="padding: 20px; background: var(--color-bg-3); border-radius: var(--radius-base); border-left: 4px solid var(--starbucks-green);">
+                    <p style="margin-bottom: 12px;"><strong>Primary Target:</strong></p>
+                    <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--starbucks-green); margin-bottom: 16px;">Reduce average wait time from 6.0 to 4.0 minutes</p>
+                    
+                    <p style="margin-bottom: 8px;"><strong>Secondary Targets:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>75% of orders completed under 4 minutes during peak hours (up from 50%)</li>
+                        <li>Reduce peak wait time from 13.3 to under 5.5 minutes</li>
+                        <li>Maintain mobile order efficiency without delays</li>
+                        <li>Improve customer satisfaction scores</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-2); border-radius: var(--radius-base);"><strong>Important Note:</strong> This was the FIRST TIME in Starbucks history that the company established specific service time goals!</p>
+            </div>
+
+            <div class="card">
+                <h2>Step 5: Action Plan Developed</h2>
+                <p style="margin-bottom: 16px;">Based on root cause analysis and prioritization, the following action plan was created:</p>
+                
+                <ul class="styled-list">
+                    <li><strong>Primary Solution:</strong> Develop and implement intelligent order sequencing algorithm</li>
+                    <li><strong>Technology Partner:</strong> Partner with Empower Delivery for algorithm development</li>
+                    <li><strong>Pilot Program:</strong> Select 700 stores for initial pilot testing</li>
+                    <li><strong>Training:</strong> Create comprehensive barista training programs for new workflows</li>
+                    <li><strong>Menu Simplification:</strong> Reduce menu complexity by 30%</li>
+                    <li><strong>Equipment Upgrade:</strong> Implement Siren Craft System technology at high-volume stores</li>
+                    <li><strong>Monitoring:</strong> Establish real-time monitoring and reporting system</li>
+                    <li><strong>Staffing:</strong> Adjust peak hour staffing models</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- DO Phase Section -->
+        <section id="do" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">DO Phase: Solution Implementation &amp; Pilot Testing</h1>
+
+            <div class="card">
+                <h2>Implementation Strategy</h2>
+                <p style="margin-bottom: 16px;">The DO phase involved executing the action plan developed in the PLAN phase, with a focus on controlled pilot testing before company-wide rollout.</p>
+                
+                <div style="padding: 16px; background: var(--color-bg-2); border-radius: var(--radius-base); margin: 16px 0;">
+                    <p><strong>Why Pilot Testing?</strong> Rather than implementing changes across all 30,000+ stores immediately, Starbucks used a pilot approach to:</p>
+                    <ul style="margin-left: 20px; margin-top: 12px;">
+                        <li>Test solutions in real-world conditions</li>
+                        <li>Identify issues before full-scale deployment</li>
+                        <li>Gather data to validate effectiveness</li>
+                        <li>Refine the approach based on learnings</li>
+                        <li>Reduce risk of company-wide failure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Implementation Activities</h2>
+                
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Technology Implementation: Order Sequencing Algorithm</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Description:</strong> Rules-based intelligent algorithm that sequences orders from multiple channels</p>
+                            
+                            <h4>Functionality:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li>Prioritizes orders based on complexity and preparation time</li>
+                                <li>Balances in-store, mobile, and drive-thru orders intelligently</li>
+                                <li>Prevents mobile orders from sitting too long (customer pickup experience)</li>
+                                <li>Optimizes barista workflow to minimize idle time</li>
+                                <li>Dynamically adjusts based on real-time store conditions</li>
+                            </ul>
+
+                            <h4>Development:</h4>
+                            <p style="margin-top: 12px;">Developed by a team of 6 engineers in partnership with Empower Delivery, a technology firm specializing in order management systems for quick-service restaurants.</p>
+
+                            <h4>Deployment:</h4>
+                            <p style="margin-top: 12px;">Installed at 700 pilot stores with real-time monitoring capabilities</p>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);">
+                                <strong>Impact:</strong> This technology addressed the #1 root cause (order sequencing inefficiency = 35% of delays)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Equipment Upgrade: Siren Craft System</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Description:</strong> Advanced beverage-making equipment designed to reduce drink preparation complexity and time</p>
+                            
+                            <h4>Features:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li>Streamlined beverage creation process</li>
+                                <li>Improved equipment ergonomics for faster barista movements</li>
+                                <li>Faster milk steaming and espresso extraction</li>
+                                <li>Reduced steps for complex drinks</li>
+                            </ul>
+
+                            <h4>Deployment Strategy:</h4>
+                            <p style="margin-top: 12px;">Initially deployed in highest-volume pilot stores where equipment capacity was a limiting factor</p>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);">
+                                <strong>Impact:</strong> Addressed equipment capacity limitations (12% of delays) and reduced preparation time for complex drinks (20% of delays)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Training Programs</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;">Comprehensive training was critical for successful implementation:</p>
+                            
+                            <h4>Training Modules:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li><strong>New Beverage Routines:</strong> Simplified, standardized preparation methods to reduce variation and improve speed</li>
+                                <li><strong>Algorithm Usage:</strong> How to work with the order prioritization system and understand sequencing logic</li>
+                                <li><strong>Efficiency Techniques:</strong> Time-saving best practices and optimal movement patterns</li>
+                                <li><strong>Customer Communication:</strong> Managing customer expectations during transition period</li>
+                                <li><strong>Siren System Operation:</strong> For stores receiving equipment upgrades</li>
+                            </ul>
+
+                            <h4>Training Delivery:</h4>
+                            <p style="margin-top: 12px;">All baristas at 700 pilot stores received hands-on training before algorithm deployment. Ongoing coaching provided by shift supervisors.</p>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--color-bg-2); border-radius: var(--radius-base);">
+                                <strong>Key Learning:</strong> Barista buy-in was critical. Initial resistance was overcome through clear communication about how the system would make their jobs easier during peak periods.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Menu Simplification</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Action:</strong> Reduced menu complexity by eliminating 30% of menu items</p>
+                            
+                            <h4>Approach:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li>Analyzed sales data to identify low-volume, high-complexity items</li>
+                                <li>Removed seasonal items that required special ingredients</li>
+                                <li>Streamlined customization options</li>
+                                <li>Focused menu on core, popular offerings</li>
+                            </ul>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);">
+                                <strong>Impact:</strong> Directly addressed complex menu items cause (20% of delays) while improving inventory management
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Process Changes</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <h4>Key Workflow Changes:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li><strong>Order Sequencing:</strong> Moved from first-come-first-served to algorithm-driven intelligent sequencing</li>
+                                <li><strong>Station Separation:</strong> Separated ordering and preparation stations where space permitted</li>
+                                <li><strong>Timing Goals:</strong> Implemented specific 4-minute timing goals (first time in company history!)</li>
+                                <li><strong>Visual Management:</strong> Created order tracking boards showing queue status</li>
+                                <li><strong>Feedback Loops:</strong> Established daily huddles for baristas to share insights with management</li>
+                                <li><strong>Standard Operating Procedures:</strong> Documented new workflows in updated SOPs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Pilot Scope &amp; Duration</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-label">Initial Pilot Stores</div>
+                        <div class="metric-value">700</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Store Selection</div>
+                        <div class="metric-value" style="font-size: var(--font-size-base);">Mixed Volume</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Pilot Duration</div>
+                        <div class="metric-value" style="font-size: var(--font-size-base);">Multi-Month</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Post-Pilot Expansion</div>
+                        <div class="metric-value" style="font-size: var(--font-size-base);">Hundreds More</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 16px;"><strong>Store Selection Strategy:</strong> The 700 pilot stores included a mix of high-volume urban stores, suburban locations, and typical stores to ensure the solution worked across different conditions and customer patterns.</p>
+            </div>
+
+            <div class="chart-container">
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/3fb2e906-f9da-4b88-afd2-6014c22f23ba/7f3c6a67.png" alt="PDCA Implementation Timeline">
+                <p class="chart-caption">Timeline visualization of the 12-month PDCA implementation process at Starbucks, from initial problem identification through company-wide rollout and continuous improvement</p>
+            </div>
+        </section>
+
+        <!-- CHECK Phase Section -->
+        <section id="check" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">CHECK Phase: Results Measurement &amp; Analysis</h1>
+
+            <div class="card">
+                <h2>Measurement Methods</h2>
+                <p style="margin-bottom: 16px;">The CHECK phase involved rigorous data collection and analysis to validate whether the solutions implemented in the DO phase achieved the targets set in the PLAN phase.</p>
+                
+                <h3>Data Collection Approach:</h3>
+                <ul class="styled-list">
+                    <li><strong>Real-Time Tracking:</strong> Order tracking through the new technology platform providing continuous data</li>
+                    <li><strong>Automated Calculation:</strong> Wait time automatically calculated and reported for every order</li>
+                    <li><strong>Customer Feedback:</strong> Surveys at pilot locations to measure satisfaction changes</li>
+                    <li><strong>Quality Monitoring:</strong> Order accuracy tracked to ensure quality wasn't sacrificed for speed</li>
+                    <li><strong>Staff Metrics:</strong> Employee performance and satisfaction measured</li>
+                    <li><strong>Comparative Analysis:</strong> Before-and-after comparison across all metrics</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Analysis Tools Used in CHECK Phase</h2>
+                
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Control Charts &amp; Statistical Process Control (SPC)</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Monitor wait time variation over time and detect whether improvements were consistent and sustained</p>
+                            
+                            <h4>What They Measured:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li>Average wait time trends over the pilot period</li>
+                                <li>Variation in wait times (consistency)</li>
+                                <li>Whether the process was "in control" (predictable)</li>
+                                <li>Detection of any unusual patterns or outliers</li>
+                            </ul>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);">
+                                <strong>Key Insight:</strong> Control charts showed consistent improvement after algorithm implementation. The process became more stable and predictable, not just faster on average.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Performance Dashboards</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Provide real-time visibility into key performance indicators across all pilot stores</p>
+                            
+                            <h4>Dashboard Components:</h4>
+                            <ul style="margin-left: 20px; margin-top: 12px; margin-bottom: 16px;">
+                                <li>Average wait time by store, district, and company-wide</li>
+                                <li>Percentage of orders meeting 4-minute target</li>
+                                <li>Peak hour performance metrics</li>
+                                <li>Channel performance (in-store vs mobile vs drive-thru)</li>
+                                <li>Order accuracy rates</li>
+                                <li>Customer satisfaction scores</li>
+                            </ul>
+
+                            <p style="margin-top: 12px;">Store managers and district leaders could monitor performance daily and identify stores needing additional support.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Before-and-After Comparative Analysis</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <p style="margin-bottom: 16px;"><strong>Purpose:</strong> Quantify the exact impact of the PDCA interventions</p>
+                            
+                            <p>Statistical analysis compared baseline metrics (before PDCA) with pilot results (after implementation) to calculate improvement percentages and validate target achievement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Results Achieved</h2>
+                
+                <div style="padding: 24px; background: linear-gradient(135deg, var(--starbucks-green) 0%, var(--starbucks-green-dark) 100%); color: white; border-radius: var(--radius-lg); margin-bottom: 24px; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 16px;">🎯 ALL PRIMARY TARGETS ACHIEVED! 🎯</h3>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Wait Time Reduction</div>
+                        <div class="metric-value">2.0 min</div>
+                        <div style="font-size: var(--font-size-sm); margin-top: 8px; color: var(--color-success);">33.3% improvement</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">New Average Wait Time</div>
+                        <div class="metric-value">4.0 min</div>
+                        <div style="font-size: var(--font-size-sm); margin-top: 8px; color: var(--color-success);">✓ Target achieved!</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Orders Under 4 Minutes</div>
+                        <div class="metric-value">75%</div>
+                        <div style="font-size: var(--font-size-sm); margin-top: 8px; color: var(--color-success);">+25 points improvement</div>
+                    </div>
+                    <div class="metric-box" style="background: var(--color-bg-3);">
+                        <div class="metric-label">Peak Wait Time Reduced To</div>
+                        <div class="metric-value">5.3 min</div>
+                        <div style="font-size: var(--font-size-sm); margin-top: 8px; color: var(--color-success);">8.0 minute reduction</div>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 32px;">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/d52d0ed3-6f6b-4839-a73f-9782100d4c23/2c5673b4.png" alt="Performance comparison before and after PDCA">
+                    <p class="chart-caption">Performance comparison showing significant improvements across all key metrics after PDCA implementation, with average wait time reduced from 6 to 4 minutes (33.3% improvement)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Detailed Results Analysis</h2>
+                
+                <h3>Quantitative Success Metrics:</h3>
+                <table style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Baseline</th>
+                            <th>After PDCA</th>
+                            <th>Change</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Average Wait Time</td>
+                            <td>6.0 min</td>
+                            <td>4.0 min</td>
+                            <td>-2.0 min (-33.3%)</td>
+                            <td style="color: var(--color-success); font-weight: bold;">✓ Target Met</td>
+                        </tr>
+                        <tr>
+                            <td>Peak Wait Time</td>
+                            <td>13.3 min</td>
+                            <td>5.3 min</td>
+                            <td>-8.0 min (-60.2%)</td>
+                            <td style="color: var(--color-success); font-weight: bold;">✓ Exceeded Target</td>
+                        </tr>
+                        <tr>
+                            <td>Orders Under 4 Min</td>
+                            <td>50%</td>
+                            <td>75%</td>
+                            <td>+25 points</td>
+                            <td style="color: var(--color-success); font-weight: bold;">✓ Target Met</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Complaints</td>
+                            <td>Baseline</td>
+                            <td>Reduced</td>
+                            <td>Decreased</td>
+                            <td style="color: var(--color-success); font-weight: bold;">✓ Improved</td>
+                        </tr>
+                        <tr>
+                            <td>Order Accuracy</td>
+                            <td>High</td>
+                            <td>Maintained</td>
+                            <td>No decline</td>
+                            <td style="color: var(--color-success); font-weight: bold;">✓ Quality Preserved</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-top: 24px;">Qualitative Successes:</h3>
+                <ul class="styled-list">
+                    <li><strong>Customer Satisfaction:</strong> Positive feedback from customers about faster service and reduced wait times</li>
+                    <li><strong>Barista Approval:</strong> After initial training period, baristas reported the new system made peak hours more manageable</li>
+                    <li><strong>Work Environment:</strong> Improved workplace conditions during peak periods reduced stress</li>
+                    <li><strong>Consistency:</strong> Better customer experience consistency across different times of day</li>
+                    <li><strong>Staff Retention:</strong> Employee turnover rates improved</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Gaps &amp; Areas for Continued Improvement</h2>
+                <p style="margin-bottom: 16px;">The CHECK phase also identified areas that still needed attention:</p>
+                
+                <ul class="styled-list">
+                    <li><strong>Capacity Constraints:</strong> Some very high-volume stores still faced capacity constraints that process efficiency alone couldn't solve (need equipment/space expansion)</li>
+                    <li><strong>Mobile Order Timing:</strong> Mobile order pickup time prediction needed refinement for better customer experience</li>
+                    <li><strong>Ongoing Training:</strong> Continuous staff training required to maintain performance as new baristas are hired</li>
+                    <li><strong>Equipment Needs:</strong> Not all locations received Siren System upgrades; those without it showed less improvement</li>
+                    <li><strong>Algorithm Refinement:</strong> Opportunities to further optimize sequencing rules based on learnings</li>
+                </ul>
+
+                <div style="margin-top: 16px; padding: 16px; background: var(--color-bg-2); border-radius: var(--radius-base);">
+                    <strong>Important:</strong> Identifying gaps in the CHECK phase is critical because it informs the next PDCA cycle and ensures continuous improvement rather than declaring victory prematurely.
+                </div>
+            </div>
+        </section>
+
+        <!-- ACT Phase Section -->
+        <section id="act" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">ACT Phase: Standardization &amp; Continuous Improvement</h1>
+
+            <div class="card">
+                <h2>Why the ACT Phase Matters</h2>
+                <p style="margin-bottom: 16px;">The ACT phase is where successful pilots become permanent improvements and learnings are captured. Without this phase, improvements might fade over time or fail to spread beyond pilot locations.</p>
+                
+                <div style="padding: 16px; background: var(--color-bg-3); border-radius: var(--radius-base); border-left: 4px solid var(--starbucks-green);">
+                    <p><strong>Two Key Activities in ACT Phase:</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 12px;">
+                        <li><strong>Standardize</strong> what worked (make it the new normal)</li>
+                        <li><strong>Plan the next PDCA cycle</strong> to address remaining gaps and continue improving</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Standardization Actions</h2>
+                <p style="margin-bottom: 16px;">Based on the successful pilot results validated in CHECK phase, Starbucks took the following standardization actions:</p>
+                
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Company-Wide Rollout</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <ul style="margin-left: 20px;">
+                                <li>Order sequencing algorithm deployed to ALL qualifying stores nationwide</li>
+                                <li>Rollout expanded beyond the initial 700 pilot stores to hundreds more</li>
+                                <li>Implementation plan created for remaining stores over following quarters</li>
+                                <li>Technology infrastructure scaled to support company-wide deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Standard Operating Procedures (SOPs) Updated</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <ul style="margin-left: 20px;">
+                                <li>All process changes documented in updated Standard Operating Procedures</li>
+                                <li>New beverage preparation routines formalized</li>
+                                <li>Order sequencing workflow standardized across all stores</li>
+                                <li>Visual management standards documented</li>
+                                <li>SOPs distributed to all stores and made part of new employee onboarding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Company-Wide Service Goal Established</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <div style="padding: 16px; background: var(--color-bg-2); border-radius: var(--radius-base); margin-bottom: 12px;">
+                                <strong>Historic Milestone:</strong> For the first time in company history, Starbucks established a specific service time goal of 4 minutes as a company-wide standard!
+                            </div>
+                            <p>This goal became part of:</p>
+                            <ul style="margin-left: 20px; margin-top: 12px;">
+                                <li>Store performance metrics</li>
+                                <li>Manager accountability measures</li>
+                                <li>Training materials</li>
+                                <li>Daily operations expectations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Training Curriculum Formalized</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <ul style="margin-left: 20px;">
+                                <li>Barista training curriculum updated to include new workflows</li>
+                                <li>Algorithm system training made mandatory for all new hires</li>
+                                <li>Efficiency techniques incorporated into standard training</li>
+                                <li>Ongoing refresher training scheduled quarterly</li>
+                                <li>Train-the-trainer program created for shift supervisors</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Monitoring &amp; Reporting Systems</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <ul style="margin-left: 20px;">
+                                <li>Real-time performance dashboards made available to all store managers</li>
+                                <li>Daily wait time reporting automated</li>
+                                <li>Weekly performance reviews at store level</li>
+                                <li>Monthly district-level analysis</li>
+                                <li>Quarterly executive reviews of company-wide trends</li>
+                                <li>Alert system for stores falling below targets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Visual Management Standards</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <ul style="margin-left: 20px;">
+                                <li>Order tracking boards standardized across stores</li>
+                                <li>Performance metrics posted in back-of-house areas</li>
+                                <li>Target time reminders at beverage stations</li>
+                                <li>Visual cues for algorithm-sequenced orders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Continuous Improvement Initiatives</h2>
+                <p style="margin-bottom: 16px;">The ACT phase doesn't just standardize—it also launches the NEXT PDCA cycle. Starbucks identified these continuous improvement opportunities:</p>
+                
+                <h3>Next PDCA Cycle Opportunities:</h3>
+                <ul class="styled-list">
+                    <li><strong>Algorithm Enhancement:</strong> Further optimize sequencing algorithm using AI/machine learning based on millions of orders processed</li>
+                    <li><strong>Equipment Expansion:</strong> Extend Siren Craft System to more locations, prioritizing high-volume stores</li>
+                    <li><strong>Mobile Order Timing:</strong> Pilot test mobile order pickup time window scheduling feature to improve customer experience</li>
+                    <li><strong>Menu Optimization:</strong> Explore additional menu simplification opportunities</li>
+                    <li><strong>Staff Scheduling:</strong> Enhance staff scheduling optimization using predictive analytics</li>
+                    <li><strong>Store Layout:</strong> Test improved physical layouts at select locations to reduce barista movement</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Ongoing Monitoring Plan</h2>
+                <p style="margin-bottom: 16px;">To ensure improvements are sustained over time:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Frequency</th>
+                            <th>Activity</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Daily</td>
+                            <td>Store-level performance monitoring via dashboard</td>
+                            <td>Store Manager</td>
+                        </tr>
+                        <tr>
+                            <td>Weekly</td>
+                            <td>Performance review and barista feedback session</td>
+                            <td>Store Manager</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly</td>
+                            <td>District-level analysis and support for underperforming stores</td>
+                            <td>District Manager</td>
+                        </tr>
+                        <tr>
+                            <td>Quarterly</td>
+                            <td>Deep-dive analysis, trend identification, improvement planning</td>
+                            <td>Regional Operations</td>
+                        </tr>
+                        <tr>
+                            <td>Annually</td>
+                            <td>Company-wide PDCA cycle review and next cycle planning</td>
+                            <td>Executive Leadership</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Lessons Learned</h2>
+                <p style="margin-bottom: 16px;">Key insights captured from the PDCA journey:</p>
+                
+                <ul class="styled-list">
+                    <li><strong>Holistic Approach Required:</strong> Technology + process + people changes needed together for success. Technology alone wouldn't have worked without training and process redesign.</li>
+                    <li><strong>Employee Input Critical:</strong> Barista feedback during pilot was invaluable for refining the solution and gaining buy-in.</li>
+                    <li><strong>Data-Driven Essential:</strong> Using quality tools (Fishbone, 5 Whys, Pareto) to identify root causes prevented wasting resources on symptoms rather than causes.</li>
+                    <li><strong>Pilot Testing Reduces Risk:</strong> Testing at 700 stores before company-wide rollout allowed refinement and proved concept before massive investment.</li>
+                    <li><strong>Quality AND Speed Possible:</strong> Customer experience improved when service speed increased without sacrificing quality or accuracy.</li>
+                    <li><strong>Standardization Sustains Gains:</strong> Documenting in SOPs and training ensures improvements don't fade with staff turnover.</li>
+                    <li><strong>Continuous Improvement Mindset:</strong> Viewing PDCA as a cycle rather than a one-time project creates culture of ongoing enhancement.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Organizational Impact</h2>
+                
+                <h3>Business Results:</h3>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li>Working to reverse 5-quarter same-store sales decline</li>
+                    <li>Improved competitive position in quick-service coffee market</li>
+                    <li>Enhanced brand reputation for quality service</li>
+                    <li>Increased customer loyalty and repeat visits</li>
+                </ul>
+
+                <h3>Cultural Impact:</h3>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li>Created culture of continuous improvement throughout organization</li>
+                    <li>Improved employee morale and retention</li>
+                    <li>Demonstrated power of data-driven decision making</li>
+                    <li>Built capability for future PDCA initiatives</li>
+                    <li>Empowered frontline employees to contribute to solutions</li>
+                </ul>
+
+                <div style="margin-top: 24px; padding: 20px; background: linear-gradient(135deg, var(--starbucks-green) 0%, var(--starbucks-green-dark) 100%); color: white; border-radius: var(--radius-lg); text-align: center;">
+                    <h3 style="color: white; margin-bottom: 12px;">🔄 The PDCA Cycle Continues 🔄</h3>
+                    <p style="margin: 0;">This case study demonstrates that PDCA is not a one-time project but a continuous cycle of improvement, learning, and organizational development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Section -->
+        <section id="library" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">Documents &amp; Visuals Library</h1>
+
+            <div class="card">
+                <h2>📊 Data Tables &amp; Reference Materials</h2>
+                
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Baseline vs After Metrics Comparison</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Baseline (Before PDCA)</th>
+                                        <th>After PDCA</th>
+                                        <th>Change</th>
+                                        <th>% Improvement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Average Wait Time</td>
+                                        <td>6.0 minutes</td>
+                                        <td>4.0 minutes</td>
+                                        <td>-2.0 minutes</td>
+                                        <td>33.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peak Wait Time</td>
+                                        <td>13.3 minutes</td>
+                                        <td>5.3 minutes</td>
+                                        <td>-8.0 minutes</td>
+                                        <td>60.2%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Orders Under 4 Minutes</td>
+                                        <td>50%</td>
+                                        <td>75%</td>
+                                        <td>+25 points</td>
+                                        <td>50% increase</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Pareto Analysis Data</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Root Cause</th>
+                                        <th>% of Total Delays</th>
+                                        <th>Cumulative %</th>
+                                        <th>Priority</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Order Sequencing Inefficiency</td>
+                                        <td>35%</td>
+                                        <td>35%</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peak Hour Understaffing</td>
+                                        <td>25%</td>
+                                        <td>60%</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complex Menu Items</td>
+                                        <td>20%</td>
+                                        <td>80%</td>
+                                        <td>Medium</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Equipment Capacity Limitations</td>
+                                        <td>12%</td>
+                                        <td>92%</td>
+                                        <td>Low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Other Factors</td>
+                                        <td>8%</td>
+                                        <td>100%</td>
+                                        <td>Low</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="margin-top: 16px; padding: 12px; background: var(--color-bg-3); border-radius: var(--radius-base);"><strong>80/20 Principle Applied:</strong> Top 2 causes represent 60% of total problem, allowing focused intervention.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Fishbone Diagram Causes Summary</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Identified Causes</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>First-come-first-served sequencing, No channel prioritization, Inefficient routines</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Machine</strong></td>
+                                        <td>Equipment capacity constraints, Outdated order system, Lack of automation</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Manpower</strong></td>
+                                        <td>Insufficient peak staffing, Training gaps, High turnover</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Material</strong></td>
+                                        <td>Complex menu, High customizations</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Measurement</strong></td>
+                                        <td>No real-time tracking, No standardized goals</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Environment</strong></td>
+                                        <td>Variable traffic patterns, Layout constraints</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><strong>Total Causes Identified</strong></td>
+                                        <td><strong>15</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>5 Whys Analysis Steps</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Level</th>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Problem</td>
+                                        <td>What is the problem?</td>
+                                        <td>Customers waiting more than 4 minutes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Why 1</td>
+                                        <td>Why are customers waiting so long?</td>
+                                        <td>Orders take too long to prepare</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Why 2</td>
+                                        <td>Why do orders take too long to prepare?</td>
+                                        <td>Baristas handling multiple order types simultaneously without prioritization</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Why 3</td>
+                                        <td>Why is there no prioritization?</td>
+                                        <td>No intelligent system to sequence orders efficiently</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Why 4</td>
+                                        <td>Why is there no intelligent sequencing?</td>
+                                        <td>First-come-first-served doesn't account for order complexity or channels</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Why 5</td>
+                                        <td>Why doesn't the system account for complexity?</td>
+                                        <td>Company lacks technology-enabled order management</td>
+                                    </tr>
+                                    <tr style="background: var(--color-bg-3);">
+                                        <td><strong>ROOT CAUSE</strong></td>
+                                        <td colspan="2"><strong>Absence of intelligent order sequencing algorithm and optimized workflow system</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpandable(this)">
+                        <h4>Quality Tools Reference Guide</h4>
+                        <span class="expandable-icon">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="expandable-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tool Name</th>
+                                        <th>PDCA Phase</th>
+                                        <th>Purpose in This Case</th>
+                                        <th>Key Insight Generated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Fishbone Diagram</td>
+                                        <td>PLAN</td>
+                                        <td>Identify all potential root causes across 6M categories</td>
+                                        <td>15 causes across method, machine, manpower, material, measurement, environment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5 Whys Analysis</td>
+                                        <td>PLAN</td>
+                                        <td>Drill down to fundamental root cause</td>
+                                        <td>Lack of intelligent order sequencing system is root cause</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pareto Chart</td>
+                                        <td>PLAN</td>
+                                        <td>Prioritize which causes contribute most to delays</td>
+                                        <td>Order sequencing (35%) and staffing (25%) = 60% of problem</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Process Flow Mapping</td>
+                                        <td>PLAN</td>
+                                        <td>Visualize workflow and identify bottlenecks</td>
+                                        <td>Bottleneck at order preparation due to no prioritization</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Control Charts</td>
+                                        <td>CHECK</td>
+                                        <td>Monitor wait time variation over time</td>
+                                        <td>Detected consistent improvement after algorithm implementation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Statistical Process Control</td>
+                                        <td>CHECK</td>
+                                        <td>Measure process capability and consistency</td>
+                                        <td>Process now more stable and predictable</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📈 Visual Diagrams &amp; Charts</h2>
+                
+                <div class="library-grid">
+                    <div class="library-item">
+                        <h4>Pareto Chart: Root Causes Analysis</h4>
+                        <p style="margin: 12px 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">Shows that order sequencing inefficiency and peak hour understaffing account for 60% of all delays</p>
+                        <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/4ab68c3f-5bb9-4c0d-856f-c69fe1986d1a/73d6428b.png" alt="Pareto Chart" style="width: 100%; border-radius: var(--radius-base); margin-top: 12px;">
+                    </div>
+                    
+                    <div class="library-item">
+                        <h4>Performance Comparison Chart</h4>
+                        <p style="margin: 12px 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">Before vs after metrics showing 33.3% improvement in average wait time</p>
+                        <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/d52d0ed3-6f6b-4839-a73f-9782100d4c23/2c5673b4.png" alt="Performance Comparison" style="width: 100%; border-radius: var(--radius-base); margin-top: 12px;">
+                    </div>
+                    
+                    <div class="library-item">
+                        <h4>PDCA Implementation Timeline</h4>
+                        <p style="margin: 12px 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">12-month timeline showing all phases and key activities</p>
+                        <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1a21c2a6ddcd15970e7709d3deece08a/3fb2e906-f9da-4b88-afd2-6014c22f23ba/7f3c6a67.png" alt="Timeline" style="width: 100%; border-radius: var(--radius-base); margin-top: 12px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>💡 Quick Reference: PDCA Phases Summary</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Key Activities</th>
+                            <th>Tools Used</th>
+                            <th>Outcomes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PLAN</strong></td>
+                            <td>Problem ID, Data collection, Root cause analysis, Target setting, Action planning</td>
+                            <td>Fishbone, 5 Whys, Pareto, Process Flow Mapping</td>
+                            <td>Root causes identified, 4-minute target set, Algorithm solution planned</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DO</strong></td>
+                            <td>Pilot implementation, Training, Technology deployment, Process changes</td>
+                            <td>Pilot testing methodology</td>
+                            <td>700 stores implemented algorithm, Baristas trained, Siren System deployed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CHECK</strong></td>
+                            <td>Data collection, Results analysis, Gap identification</td>
+                            <td>Control Charts, SPC, Dashboards, Comparative analysis</td>
+                            <td>All targets met: 4.0 min average, 75% under 4 min, 5.3 min peak</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ACT</strong></td>
+                            <td>Standardization, Company-wide rollout, Next cycle planning</td>
+                            <td>SOPs, Training programs, Monitoring systems</td>
+                            <td>Solution standardized company-wide, Continuous improvement cycle initiated</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Assessment Section -->
+        <section id="assessment" class="section">
+            <h1 style="color: var(--starbucks-green); margin-bottom: 24px;">Assessment: Test Your PDCA Knowledge</h1>
+
+            <div class="card" style="margin-bottom: 32px;">
+                <h3>Instructions</h3>
+                <p style="margin-bottom: 12px;">This assessment contains <strong>15 questions</strong> focused on understanding HOW and WHY the PDCA tools and methodologies were used in the Starbucks case study.</p>
+                <ul style="margin-left: 20px; margin-bottom: 12px;">
+                    <li><strong>10 Multiple Choice (MCSR)</strong> - Select the best answer</li>
+                    <li><strong>3 True/False</strong> - Determine if the statement is true or false</li>
+                    <li><strong>2 Subjective</strong> - Provide detailed written responses</li>
+                </ul>
+                <p style="padding: 12px; background: var(--color-bg-2); border-radius: var(--radius-base);">This is an open-book assessment. You may review case study materials while answering questions.</p>
+            </div>
+
+            <div id="assessment-questions">
+                <!-- Questions will be rendered here by JavaScript -->
+            </div>
+
+            <div id="assessment-results" style="display: none;">
+                <!-- Results will be shown here -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Expandable sections
+        function toggleExpandable(header) {
+            const expandable = header.parentElement;
+            expandable.classList.toggle('open');
+        }
+
+        // Assessment Data
+        const assessmentQuestions = [
+            {
+                id: 1,
+                type: 'mcsr',
+                question: 'In the Starbucks case, what was the PRIMARY purpose of using the Fishbone (Ishikawa) Diagram in the PLAN phase?',
+                options: [
+                    'To calculate wait time statistics',
+                    'To systematically identify potential root causes across multiple categories',
+                    'To train baristas on new procedures',
+                    'To design the order sequencing algorithm'
+                ],
+                correct: 1,
+                explanation: 'The Fishbone Diagram was used to systematically identify ALL potential root causes across the 6M categories (Method, Machine, Manpower, Material, Measurement, Environment). This comprehensive categorization ensured no potential cause was overlooked, resulting in 15 distinct causes being identified.'
+            },
+            {
+                id: 2,
+                type: 'mcsr',
+                question: 'Why did Starbucks use Pareto Analysis in combination with the Fishbone Diagram?',
+                options: [
+                    'Because it\'s required by PDCA methodology',
+                    'To prioritize which root causes contribute most significantly to the problem',
+                    'To reduce the cost of implementation',
+                    'To satisfy customer demands'
+                ],
+                correct: 1,
+                explanation: 'Pareto Analysis was used to PRIORITIZE the causes identified by the Fishbone Diagram. While the Fishbone provided breadth (identifying all potential causes), Pareto provided prioritization by quantifying that order sequencing (35%) and staffing (25%) represented 60% of the problem. This allowed Starbucks to focus resources on the vital few causes with the greatest impact (80/20 principle).'
+            },
+            {
+                id: 3,
+                type: 'mcsr',
+                question: 'The 5 Whys technique used by Starbucks helped achieve which specific outcome?',
+                options: [
+                    'Improved barista morale',
+                    'Identified the fundamental root cause: lack of intelligent order sequencing system',
+                    'Reduced menu complexity',
+                    'Increased store traffic'
+                ],
+                correct: 1,
+                explanation: 'The 5 Whys technique drilled down from the surface symptom ("customers waiting too long") through multiple layers of "why" to reach the fundamental root cause: the absence of an intelligent order sequencing algorithm and optimized workflow system. This depth of analysis prevented Starbucks from addressing symptoms rather than the true underlying problem.'
+            },
+            {
+                id: 4,
+                type: 'mcsr',
+                question: 'In which PDCA phase was the order sequencing algorithm actually implemented at pilot stores?',
+                options: [
+                    'PLAN',
+                    'DO',
+                    'CHECK',
+                    'ACT'
+                ],
+                correct: 1,
+                explanation: 'The DO phase is where the action plan developed in PLAN is executed. In this phase, Starbucks implemented the order sequencing algorithm at 700 pilot stores, conducted barista training, deployed the Siren Craft System, and executed all other planned interventions. PLAN is for analysis and planning; DO is for implementation.'
+            },
+            {
+                id: 5,
+                type: 'mcsr',
+                question: 'What was the strategic purpose of implementing the solution at 700 pilot stores before company-wide rollout?',
+                options: [
+                    'To reduce costs',
+                    'To test the solution in real conditions, gather data, and refine before full deployment',
+                    'To train all baristas simultaneously',
+                    'To meet regulatory requirements'
+                ],
+                correct: 1,
+                explanation: 'Pilot testing is a risk mitigation strategy that allows organizations to validate solutions in real-world conditions before full-scale deployment. By testing at 700 stores first, Starbucks could identify issues, refine the approach, gather proof of effectiveness, and reduce the risk of a costly company-wide failure. This is a fundamental best practice in the DO phase.'
+            },
+            {
+                id: 6,
+                type: 'mcsr',
+                question: 'Which quality tool was MOST critical for monitoring whether the improvements were sustained over time?',
+                options: [
+                    'Fishbone Diagram',
+                    'Pareto Chart',
+                    'Control Charts and Statistical Process Control',
+                    '5 Whys'
+                ],
+                correct: 2,
+                explanation: 'Control Charts and Statistical Process Control (SPC) are specifically designed to monitor process performance over time, detect variations, and ensure processes remain "in control." These tools, used in the CHECK phase and ongoing monitoring, track whether improvements are sustained rather than temporary. Fishbone, Pareto, and 5 Whys are diagnostic tools used in PLAN phase, not monitoring tools.'
+            },
+            {
+                id: 7,
+                type: 'mcsr',
+                question: 'Why did Starbucks use MULTIPLE quality tools (Fishbone, 5 Whys, Pareto) rather than just one?',
+                options: [
+                    'To make the project more complex',
+                    'Each tool serves a different analytical purpose - comprehensive analysis requires multiple perspectives',
+                    'To increase project duration',
+                    'Company policy required it'
+                ],
+                correct: 1,
+                explanation: 'Each quality tool serves a distinct purpose: Fishbone provides BREADTH (identifying all potential causes across categories), 5 Whys provides DEPTH (drilling to root cause), and Pareto provides PRIORITIZATION (quantifying which causes matter most). Using multiple complementary tools provides comprehensive analysis that no single tool could achieve alone. This multi-tool approach is a hallmark of rigorous problem-solving.'
+            },
+            {
+                id: 8,
+                type: 'mcsr',
+                question: 'What is the primary reason Starbucks established the 4-minute service goal in the PLAN phase before implementation?',
+                options: [
+                    'Competitor benchmarking',
+                    'To provide a clear, measurable target for evaluating success in the CHECK phase',
+                    'To motivate employees',
+                    'To attract investors'
+                ],
+                correct: 1,
+                explanation: 'Setting specific, measurable targets in the PLAN phase is essential because it provides objective criteria for evaluating success in the CHECK phase. Without a defined target (4 minutes, 75% of orders under 4 minutes), it would be impossible to determine whether the interventions actually worked. Measurable targets enable data-driven assessment rather than subjective judgments.'
+            },
+            {
+                id: 9,
+                type: 'mcsr',
+                question: 'The CHECK phase analysis showed 75% of orders met the 4-minute target. What was the appropriate ACT phase response?',
+                options: [
+                    'Stop the project as 100% wasn\'t achieved',
+                    'Standardize the successful process company-wide and plan continuous improvement for remaining gaps',
+                    'Return to the original process',
+                    'Immediately implement at all stores without analysis'
+                ],
+                correct: 1,
+                explanation: 'When CHECK phase results show that targets have been met (75% was the goal, and it was achieved), the ACT phase involves two activities: (1) STANDARDIZE the successful solution company-wide through SOPs, training, and rollout, and (2) Identify remaining gaps and plan the NEXT PDCA cycle for continuous improvement. PDCA is a cycle, not a one-time fix. Perfect results (100%) are rare; achieving targets warrants standardization while planning for further improvement.'
+            },
+            {
+                id: 10,
+                type: 'mcsr',
+                question: 'How did Process Flow Mapping contribute differently than the Fishbone Diagram in this case?',
+                options: [
+                    'They serve the same purpose',
+                    'Flow mapping visualizes the sequential workflow and identifies bottlenecks; Fishbone categorizes potential causes',
+                    'Flow mapping is used in CHECK phase only',
+                    'Flow mapping replaces the need for other tools'
+                ],
+                correct: 1,
+                explanation: 'Process Flow Mapping and Fishbone Diagrams are complementary but distinct tools. Flow Mapping visualizes the SEQUENTIAL STEPS in a process and identifies WHERE bottlenecks occur (in this case, at the order sequencing step). Fishbone categorizes WHAT potential causes might exist across multiple dimensions. Flow mapping shows the process; Fishbone shows potential causes. Both are valuable and serve different analytical purposes.'
+            },
+            {
+                id: 11,
+                type: 'tf',
+                question: 'The PDCA cycle ends after the ACT phase is completed and standardization is achieved.',
+                correct: false,
+                explanation: 'FALSE. PDCA is a CONTINUOUS CYCLE, not a linear process. After ACT phase standardization, the organization should identify new improvement opportunities and begin the next PDCA cycle. In the Starbucks case, they identified further opportunities (AI algorithm enhancement, mobile order timing, additional menu optimization) to launch the next cycle. Continuous improvement means the cycle never truly ends.'
+            },
+            {
+                id: 12,
+                type: 'tf',
+                question: 'Using data-driven tools like Pareto Charts makes decision-making more objective by quantifying which problems have the greatest impact.',
+                correct: true,
+                explanation: 'TRUE. Data-driven tools like Pareto Charts replace subjective opinions with objective quantification. Rather than guessing which causes matter most, Pareto analysis showed that order sequencing (35%) and staffing (25%) represented 60% of delays. This quantification allows organizations to prioritize resources based on facts rather than assumptions, leading to more effective interventions.'
+            },
+            {
+                id: 13,
+                type: 'tf',
+                question: 'The primary purpose of the DO phase pilot test is to immediately implement the solution company-wide.',
+                correct: false,
+                explanation: 'FALSE. The primary purpose of DO phase pilot testing is to TEST the solution in controlled, real-world conditions BEFORE company-wide implementation. Pilots allow organizations to validate effectiveness, identify issues, refine the approach, and gather data to prove the concept works. Immediate company-wide implementation without piloting creates enormous risk of failure. The pilot comes first; company-wide rollout happens in ACT phase after successful CHECK phase validation.'
+            },
+            {
+                id: 14,
+                type: 'subjective',
+                question: 'Explain why Starbucks needed to use BOTH the CHECK phase measurement (analyzing results) AND the ACT phase (standardization) rather than jumping directly from implementation (DO) to standardization.',
+                rubric: [
+                    'Addresses the importance of validation before standardization',
+                    'Explains risk of standardizing ineffective or partially effective solutions',
+                    'Discusses the data-driven approach and objective assessment in CHECK',
+                    'Mentions gap identification that informs continuous improvement',
+                    'Recognizes that CHECK provides evidence/proof needed for company-wide commitment'
+                ]
+            },
+            {
+                id: 15,
+                type: 'subjective',
+                question: 'Describe how the combination of Fishbone Diagram, 5 Whys, and Pareto Chart provided more comprehensive problem analysis than any single tool could have provided in the Starbucks case.',
+                rubric: [
+                    'Explains Fishbone provides BREADTH - comprehensive identification across categories',
+                    'Explains 5 Whys provides DEPTH - drilling to fundamental root cause',
+                    'Explains Pareto provides PRIORITIZATION - quantifying impact to focus efforts',
+                    'Discusses how tools are complementary rather than redundant',
+                    'Provides specific examples from the Starbucks case showing each tool\'s unique contribution'
+                ]
+            }
+        ];
+
+        // Assessment State
+        let currentQuestion = 0;
+        let answers = {};
+        let showingResults = false;
+
+        // Initialize Assessment
+        function initAssessment() {
+            renderQuestion();
+        }
+
+        // Render Question
+        function renderQuestion() {
+            const container = document.getElementById('assessment-questions');
+            const q = assessmentQuestions[currentQuestion];
+            
+            let html = `
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="question-number">Question ${currentQuestion + 1} of ${assessmentQuestions.length}</span>
+                        <span class="question-type">${q.type === 'mcsr' ? 'Multiple Choice' : q.type === 'tf' ? 'True/False' : 'Subjective'}</span>
+                    </div>
+                    <div class="question-text">${q.question}</div>
+            `;
+
+            if (q.type === 'mcsr') {
+                html += '<div class="options">';
+                q.options.forEach((option, index) => {
+                    const isSelected = answers[q.id] === index;
+                    const isCorrect = showingResults && index === q.correct;
+                    const isIncorrect = showingResults && isSelected && index !== q.correct;
+                    html += `
+                        <label class="option ${isSelected ? 'selected' : ''} ${isCorrect ? 'correct' : ''} ${isIncorrect ? 'incorrect' : ''}" onclick="selectOption(${q.id}, ${index})">
+                            <input type="radio" name="q${q.id}" value="${index}" ${isSelected ? 'checked' : ''} ${showingResults ? 'disabled' : ''}>
+                            <span>${option}</span>
+                        </label>
+                    `;
+                });
+                html += '</div>';
+                
+                if (showingResults) {
+                    const isCorrectAnswer = answers[q.id] === q.correct;
+                    html += `
+                        <div class="feedback show ${isCorrectAnswer ? 'correct' : 'incorrect'}">
+                            <strong>${isCorrectAnswer ? '✓ Correct!' : '✗ Incorrect'}</strong><br>
+                            ${q.explanation}
+                        </div>
+                    `;
+                }
+            } else if (q.type === 'tf') {
+                html += `
+                    <div class="options">
+                        <label class="option ${answers[q.id] === true ? 'selected' : ''} ${showingResults && q.correct === true ? 'correct' : ''} ${showingResults && answers[q.id] === true && q.correct !== true ? 'incorrect' : ''}" onclick="selectTF(${q.id}, true)">
+                            <input type="radio" name="q${q.id}" value="true" ${answers[q.id] === true ? 'checked' : ''} ${showingResults ? 'disabled' : ''}>
+                            <span>True</span>
+                        </label>
+                        <label class="option ${answers[q.id] === false ? 'selected' : ''} ${showingResults && q.correct === false ? 'correct' : ''} ${showingResults && answers[q.id] === false && q.correct !== false ? 'incorrect' : ''}" onclick="selectTF(${q.id}, false)">
+                            <input type="radio" name="q${q.id}" value="false" ${answers[q.id] === false ? 'checked' : ''} ${showingResults ? 'disabled' : ''}>
+                            <span>False</span>
+                        </label>
+                    </div>
+                `;
+                
+                if (showingResults) {
+                    const isCorrectAnswer = answers[q.id] === q.correct;
+                    html += `
+                        <div class="feedback show ${isCorrectAnswer ? 'correct' : 'incorrect'}">
+                            <strong>${isCorrectAnswer ? '✓ Correct!' : '✗ Incorrect'}</strong><br>
+                            ${q.explanation}
+                        </div>
+                    `;
+                }
+            } else if (q.type === 'subjective') {
+                html += `
+                    <textarea id="subjective-${q.id}" placeholder="Type your detailed answer here..." ${showingResults ? 'disabled' : ''}>${answers[q.id] || ''}</textarea>
+                    <div class="rubric">
+                        <h4>Evaluation Rubric - Your answer should address:</h4>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            ${q.rubric.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            html += `
+                    <div class="assessment-nav">
+                        <button class="btn btn-secondary" onclick="previousQuestion()" ${currentQuestion === 0 ? 'disabled' : ''} style="${currentQuestion === 0 ? 'opacity: 0.5; cursor: not-allowed;' : ''}">← Previous</button>
+                        <span class="progress-text">Progress: ${currentQuestion + 1} / ${assessmentQuestions.length}</span>
+                        ${currentQuestion < assessmentQuestions.length - 1 ? 
+                            `<button class="btn btn-primary" onclick="nextQuestion()">Next →</button>` :
+                            `<button class="btn btn-primary" onclick="submitAssessment()" style="background: var(--starbucks-green);">Submit Assessment</button>`
+                        }
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // Selection Functions
+        function selectOption(questionId, optionIndex) {
+            if (showingResults) return;
+            answers[questionId] = optionIndex;
+            renderQuestion();
+        }
+
+        function selectTF(questionId, value) {
+            if (showingResults) return;
+            answers[questionId] = value;
+            renderQuestion();
+        }
+
+        // Navigation
+        function nextQuestion() {
+            // Save subjective answer if applicable
+            const q = assessmentQuestions[currentQuestion];
+            if (q.type === 'subjective') {
+                const textarea = document.getElementById(`subjective-${q.id}`);
+                if (textarea) {
+                    answers[q.id] = textarea.value;
+                }
+            }
+            
+            if (currentQuestion < assessmentQuestions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function previousQuestion() {
+            // Save subjective answer if applicable
+            const q = assessmentQuestions[currentQuestion];
+            if (q.type === 'subjective') {
+                const textarea = document.getElementById(`subjective-${q.id}`);
+                if (textarea) {
+                    answers[q.id] = textarea.value;
+                }
+            }
+            
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Submit Assessment
+        function submitAssessment() {
+            // Save last subjective answer
+            const q = assessmentQuestions[currentQuestion];
+            if (q.type === 'subjective') {
+                const textarea = document.getElementById(`subjective-${q.id}`);
+                if (textarea) {
+                    answers[q.id] = textarea.value;
+                }
+            }
+
+            // Calculate score (only objective questions)
+            let correctCount = 0;
+            let totalObjective = 0;
+            
+            assessmentQuestions.forEach(q => {
+                if (q.type === 'mcsr' || q.type === 'tf') {
+                    totalObjective++;
+                    if (answers[q.id] === q.correct) {
+                        correctCount++;
+                    }
+                }
+            });
+
+            const score = Math.round((correctCount / totalObjective) * 100);
+
+            // Show results
+            showingResults = true;
+            currentQuestion = 0;
+            
+            const resultsContainer = document.getElementById('assessment-results');
+            resultsContainer.style.display = 'block';
+            resultsContainer.innerHTML = `
+                <div class="score-card">
+                    <h2 style="color: white; margin-bottom: 16px;">Assessment Complete!</h2>
+                    <div class="score-value">${score}%</div>
+                    <p style="font-size: var(--font-size-lg);">You answered ${correctCount} out of ${totalObjective} objective questions correctly</p>
+                    <p style="margin-top: 16px; font-size: var(--font-size-sm); opacity: 0.9;">Note: Subjective questions (${assessmentQuestions.filter(q => q.type === 'subjective').length}) are not included in this score and should be evaluated separately using the provided rubrics.</p>
+                    <div style="margin-top: 24px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-outline" onclick="reviewAnswers()" style="color: white; border-color: white;">Review Answers</button>
+                        <button class="btn" onclick="retakeAssessment()" style="background: white; color: var(--starbucks-green);">Retake Assessment</button>
+                    </div>
+                </div>
+            `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function reviewAnswers() {
+            document.getElementById('assessment-results').style.display = 'none';
+            currentQuestion = 0;
+            renderQuestion();
+        }
+
+        function retakeAssessment() {
+            showingResults = false;
+            currentQuestion = 0;
+            answers = {};
+            document.getElementById('assessment-results').style.display = 'none';
+            renderQuestion();
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initAssessment();
+        });
+    </script>
+</body>
+</html>

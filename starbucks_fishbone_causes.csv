@@ -1,0 +1,16 @@
+Category,Root Cause
+Method,First-come-first-served order sequencing
+Method,No prioritization between order channels
+Method,Inefficient drink preparation routines
+Machine,Equipment capacity constraints during peak
+Machine,Outdated order management system
+Machine,Lack of automated sequencing technology
+Manpower,Insufficient staffing during peak periods
+Manpower,Training gaps in efficient preparation
+Manpower,High staff turnover
+Material,Overly complex menu (too many options)
+Material,Complex customizations increasing prep time
+Measurement,Lack of real-time performance tracking
+Measurement,No standardized wait time goals historically
+Environment,Variable peak hour traffic patterns
+Environment,Physical layout constraints
